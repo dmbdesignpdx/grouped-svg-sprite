@@ -1,0 +1,114 @@
+//  Filter
+
+@mixin filter($vars){
+    -webkit-filter: $vars;
+    filter: $vars;
+}
+
+
+//  Appearance
+
+@mixin appearance($var){
+    -webkit-appearance: $var;
+    -moz-appearance: $var;
+    appearance: $var;
+}
+
+
+//  Transform
+
+@mixin transform($vars,$xy:null,$s:false){
+    -webkit-transform: $vars;
+    transform: $vars;
+
+    @if ($xy) {
+        -webkit-transform-origin: $xy;
+        transform-origin: $xy
+    }
+
+    @if ($s) {
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+    }
+}
+
+
+//  Transition
+
+@mixin transition($vars...){
+    -webkit-transition: $vars;
+    transition: $vars;
+}
+
+//  Animation
+
+@mixin animation($vars...){
+    -webkit-animation: $vars;
+    animation: $vars;
+}
+
+@mixin animation-delay($var){
+    -webkit-animation-delay: $var;
+    animation-delay: $var;
+}
+
+//  Keyframes
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+
+//  Media Queries
+
+@mixin break($var) {
+    @media only screen and (max-width: $var) {
+        @content;
+    }
+}
+
+
+//  Shorthand
+
+@mixin size($w:null, $h:null){
+    @if ($h){
+        width: $w;
+        height: $h;
+    }
+    @else {
+        width: $w;
+        height: $w;
+    }
+}
+
+@mixin where($t:null, $r:null, $b:null, $l:null){
+    @if($l){
+        top: $t;
+        right: $r;
+        bottom: $b;
+        left: $l;
+    }
+    @else if($b){
+        top: $t;
+        right: $r;
+        bottom: $b;
+        left: $r;
+    }
+    @else if($r){
+        top: $t;
+        right: $r;
+        bottom: $t;
+        left: $r;
+    }
+    @else {
+        top: $t;
+        right: $t;
+        bottom: $t;
+        left: $t;
+    }
+}

@@ -1,0 +1,47 @@
+#hero {
+
+    img {
+        width:100%;
+        height: auto;
+        margin: 60px auto 0;
+
+        @include break(740px){
+            width: 60%
+        }
+        @include break(520px){
+            width: 50%
+        }
+    }
+
+    hgroup {
+        text-align: center;
+
+        h3 {
+            margin-top: 12px;
+        }
+
+        p {
+            margin-top: 12px;
+            color: $lso-lightergray;
+        }
+    }
+
+}
+
+footer {
+    background: $lso-darkergray;
+
+    .col-x {
+        width: 120px
+    }
+
+    a {
+        display: block;
+        margin: 50px 0;
+
+        img {
+            width: 100%;
+            height: auto
+        }
+    }
+}
