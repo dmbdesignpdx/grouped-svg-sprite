@@ -88,14 +88,14 @@ Setup your objects to have their `data` attribute pointing to the external svg f
 <object type="image/svg+xml" data="sprite.svg">...</object>
 ```
 
-Then give the objects their proper IDs to represent the icon they will be showing. To do that, simply use `lso-` + the group ID:
+Then give the objects their proper IDs to represent the icon they will be showing. To do that, simply use `gss-` + the group ID:
 
 ```html
-<object id="lso-square" type="image/svg+xml" data="sprite.svg">...</object>
+<object id="gss-square" type="image/svg+xml" data="sprite.svg">...</object>
 
-<object id="lso-circle" type="image/svg+xml" data="sprite.svg">...</object>
+<object id="gss-circle" type="image/svg+xml" data="sprite.svg">...</object>
 
-<object id="lso-triangle" type="image/svg+xml" data="sprite.svg">...</object>
+<object id="gss-triangle" type="image/svg+xml" data="sprite.svg">...</object>
 ```
 
 And that's it for the HTML!
@@ -110,7 +110,7 @@ First, we'll create a function called groupedSVG:
 
 ```js
 
-function groupedSVG() {
+function groupedSVG() {  // Step One
 
 
 
@@ -122,7 +122,7 @@ Then, using `querySelectorAll` we'll create an array to collect all of the objec
 ```js
 function groupedSVG() {
 
-    var objs = document.querySelectorAll('object[id^=gss-]');
+    var objs = document.querySelectorAll('object[id^=gss-]');  // Step Two
 
 };
 ```
@@ -134,7 +134,7 @@ function groupedSVG() {
 
     var objs = document.querySelectorAll('object[id^=gss-]');
 
-    for (var i = 0; i < objs.lenth; i++) {
+    for (var i = 0; i < objs.lenth; i++) {  // Step Three
 
 
 
@@ -152,7 +152,7 @@ function groupedSVG() {
 
     for (var i = 0; i < objs.lenth; i++) {
 
-        var objID = objs[i].id.toString().replace('gss-','#');
+        var objID = objs[i].id.toString().replace('gss-','#');  // Step Four
 
     }
 
@@ -169,7 +169,7 @@ function groupedSVG() {
     for (var i = 0; i < objs.lenth; i++) {
 
         var objID = objs[i].id.toString().replace('gss-','#'),
-        svgDoc = objs[i].contentDocument;
+        svgDoc = objs[i].contentDocument;  // Step Five
 
     }
 
@@ -187,7 +187,7 @@ function groupedSVG() {
 
         var objID = objs[i].id.toString().replace('gss-','#'),
         svgDoc = objs[i].contentDocument,
-        gID = svgDoc.querySelector(objID);
+        gID = svgDoc.querySelector(objID);  // Step Six
 
     }
 
@@ -207,14 +207,14 @@ function groupedSVG() {
         svgDoc = objs[i].contentDocument,
         gID = svgDoc.querySelector(objID);
 
-        gID.style.display = 'block';
+        gID.style.display = 'block';  // Step Seven
 
     }
 
 };
 ```
 
-All that's left is to call this function; and this function **has** to be called when the document finishes loading. Otherwise, the JavaScript will access an empty object. You can do that one of two ways:
+All that's left is to call this function. This function **has** to be called when the document finishes loading. Otherwise, the JavaScript will access an empty object. You can do that one of two ways:
 
 ```js
 window.onload = groupedSVG;
