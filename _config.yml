@@ -2,7 +2,9 @@ title: doodle article
 description: doodle articles are documented ideas by Daniel Blake.
 creator: Daniel Blake
 email: dmblakedesign@gmail.com
-web: danileblake.design
+
+baseurl: ""
+url: http://danileblake.design
 
 markdown: kramdown
 kramdown:
