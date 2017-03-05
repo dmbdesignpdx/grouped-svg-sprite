@@ -134,7 +134,7 @@ function groupedSVG() {
 
     var objs = document.querySelectorAll('object[id^=gss-]');
 
-    for (var i = 0; i < objs.lenth; i++) {  // Step Three
+    for (var i = 0; i < objs.length; i++) {  // Step Three
 
 
 
@@ -150,7 +150,7 @@ function groupedSVG() {
 
     var objs = document.querySelectorAll('object[id^=gss-]');
 
-    for (var i = 0; i < objs.lenth; i++) {
+    for (var i = 0; i < objs.length; i++) {
 
         var objID = objs[i].id.toString().replace('gss-','#');  // Step Four
 
@@ -166,7 +166,7 @@ function groupedSVG() {
 
     var objs = document.querySelectorAll('object[id^=gss-]');
 
-    for (var i = 0; i < objs.lenth; i++) {
+    for (var i = 0; i < objs.length; i++) {
 
         var objID = objs[i].id.toString().replace('gss-','#'),
         svgDoc = objs[i].contentDocument;  // Step Five
@@ -183,7 +183,7 @@ function groupedSVG() {
 
     var objs = document.querySelectorAll('object[id^=gss-]');
 
-    for (var i = 0; i < objs.lenth; i++) {
+    for (var i = 0; i < objs.length; i++) {
 
         var objID = objs[i].id.toString().replace('gss-','#'),
         svgDoc = objs[i].contentDocument,
@@ -201,7 +201,7 @@ function groupedSVG() {
 
     var objs = document.querySelectorAll('object[id^=gss-]');
 
-    for (var i = 0; i < objs.lenth; i++) {
+    for (var i = 0; i < objs.length; i++) {
 
         var objID = objs[i].id.toString().replace('gss-','#'),
         svgDoc = objs[i].contentDocument,
