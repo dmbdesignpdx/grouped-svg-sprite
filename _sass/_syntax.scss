@@ -1,6 +1,36 @@
-pre code, .highlight { background-color: hsl(216, 13%, 15%); color: hsl(216, 13%, 84%) }
+// Colors
 
-p code { background-color: hsl(216, 13%, 86%); color: hsl(216, 13%, 25%) }
+$hl-base: hsl(216, 13%, 50%);
+$hl-offwhite: lighten($hl-base,34%);
+$hl-darkgray: darken($hl-base,35%);
+$hl-red: hsl(353, 94%, 70%);
+$hl-purple: hsl(282, 52%, 70%);
+$hl-orange: hsl(32, 96%, 70%);
+$hl-blue: hsl(204, 62%, 68%);
+$hl-teal: hsl(168, 78%, 46%);
+$hl-green: hsl(128, 66%, 72%);
+
+
+// Structure
+
+code:not(pre code) {
+    padding: .11em .7em .23em;
+    margin: 0 .1em;
+    border-radius: 1em;
+    background-color: lighten($hl-base,36%);
+    color: darken($hl-base,25%)
+}
+
+pre, .highlight {
+    padding: 2em 2.55em 2.2em;
+    box-sizing: border-box;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    line-height: 1.5;
+    border-radius: 6px;
+    background-color: $hl-darkgray;
+    color: $hl-offwhite
+}
 
 .highlight .o { font-weight: bold } // Operator
 
@@ -8,30 +38,30 @@ p code { background-color: hsl(216, 13%, 86%); color: hsl(216, 13%, 25%) }
 
 .highlight .c, // Comment
 .highlight .cm, // Comment.Multiline
-.highlight .c1 { color: hsl(216, 13%, 35%); font-style: italic } // Comment.Single
-.highlight .cp { color: hsl(216, 13%, 70%) } // Comment.Preproc
-.highlight .cs { color: hsl(216, 13%, 35%); font-weight: bold; font-style: italic } // Comment.Special
+.highlight .c1 { color: darken($hl-base,15%); font-style: italic } // Comment.Single
+.highlight .cp { color: lighten($hl-base,20%) } // Comment.Preproc
+.highlight .cs { color: darken($hl-base,15%); font-weight: bold; font-style: italic } // Comment.Special
 
 
 // Errors
 
-.highlight .err { color: hsl(355, 90%, 60%); background-color: hsl(355, 90%, 90%) } // Error
+.highlight .err { color: darken($hl-red,10%); background-color: lighten($hl-red,20%) } // Error
 
 
 // Generics
 
-.highlight .gd { color: hsl(216, 13%, 10%); background-color: hsl(355, 90%, 90%) } // Generic.Deleted
-.highlight .gd .x { color: hsl(216, 13%, 10%); background-color: hsl(355, 90%, 82%) } // Generic.Deleted.Specific
+.highlight .gd { color: darken($hl-base,45%); background-color: lighten($hl-red,20%) } // Generic.Deleted
+.highlight .gd .x { color: darken($hl-base,45%); background-color: lighten($hl-red,12%) } // Generic.Deleted.Specific
 .highlight .ge { font-style: italic } // Generic.Emph
-.highlight .gr { color: hsl(355, 90%, 60%) } // Generic.Error
+.highlight .gr { color: darken($hl-red,10%) } // Generic.Error
 .highlight .gh { color: hsl(216, 13%, 22%) } // Generic.Heading
-.highlight .gi { color: hsl(216, 13%, 10%); background-color: hsl(110,72%,90%) } // Generic.Inserted
-.highlight .gi .x { color: hsl(216, 13%, 10%); background-color: hsl(110,72%,82%) } // Generic.Inserted.Specific
-.highlight .go { color: hsl(216, 13%, 60%) } // Generic.Output
-.highlight .gp { color: hsl(216, 13%, 50%) } // Generic.Prompt
+.highlight .gi { color: darken($hl-base,45%); background-color: lighten($hl-green,20%) } // Generic.Inserted
+.highlight .gi .x { color: darken($hl-base,45%); background-color: lighten($hl-green,12%) } // Generic.Inserted.Specific
+.highlight .go { color: lighten($hl-base,10%) } // Generic.Output
+.highlight .gp { color: $hl-base } // Generic.Prompt
 .highlight .gs { font-weight: bold } // Generic.Strong
-.highlight .gu { color: hsl(216, 13%, 74%) } // Generic.Subheading
-.highlight .gt { color: hsl(355, 80%, 50%) } // Generic.Traceback
+.highlight .gu { color: lighten($hl-base,24%) } // Generic.Subheading
+.highlight .gt { color: darken($hl-red,30%) } // Generic.Traceback
 
 
 // Keywords
@@ -39,25 +69,25 @@ p code { background-color: hsl(216, 13%, 86%); color: hsl(216, 13%, 25%) }
 .highlight .k, // Keyword
 .highlight .kd, // Keyword.Declaration
 .highlight .kp, // Keyword.Pseudo
-.highlight .kr { color: hsl(282, 50%, 70%) } // Keyword.Reserved
-.highlight .kc { color: hsl(32, 96%, 68%) } // Keyword.Constant
-.highlight .kt { color: hsl(204, 60%, 68%); font-weight: bold } // Keyword.Type
+.highlight .kr { color: $hl-purple } // Keyword.Reserved
+.highlight .kc { color: $hl-orange} // Keyword.Constant
+.highlight .kt { color: $hl-blue; font-weight: bold } // Keyword.Type
 
 
 // Names
 
-.highlight .nc { color: hsl(168, 78%, 46%) } // Name.Class
-.highlight .ni { color: hsl(282, 50%, 70%) } // Name.Entity
+.highlight .nc { color: $hl-teal } // Name.Class
+.highlight .ni { color: $hl-purple } // Name.Entity
 .highlight .ne, // Name.Exception
-.highlight .nf { color: hsl(204, 60%, 68%) } // Name.Function
-.highlight .nn { color: hsl(216, 13%, 50%) } // Name.Namespace
+.highlight .nf { color: $hl-blue } // Name.Function
+.highlight .nn { color: $hl-base } // Name.Namespace
 .highlight .nb, // Name.Builtin
-.highlight .nt { color: hsl(353, 94%, 70%) } // Name.Tag
+.highlight .nt { color: $hl-red } // Name.Tag
 .highlight .na, // Name.Attribute
 .highlight .no, // Name.Constant
 .highlight .nd, // Name.Psuedo
-.highlight .nv { color: hsl(32, 96%, 68%) } // Name.Variable
-.highlight .nx { color: hsl(200,45%,70%) }  // Name.Unknown
+.highlight .nv { color: $hl-orange } // Name.Variable
+.highlight .nx { color: desaturate($hl-blue,18%) }  // Name.Unknown
 .highlight .ow { font-weight: bold } // Operator.Word
 .highlight .w, // Text.Whitespace
 
@@ -72,7 +102,7 @@ p code { background-color: hsl(216, 13%, 86%); color: hsl(216, 13%, 25%) }
 .highlight .il, // Literal.Number.Integer.Long
 .highlight .s1, // Literal.String.Single
 .highlight .sr, // Literal.String.Regex
-.highlight .mo { color: hsl(128, 66%, 72%) } // Literal.Number.Oct
+.highlight .mo { color: $hl-green } // Literal.Number.Oct
 .highlight .sb,  // Literal.String.Backtick
 .highlight .sc, // Literal.String.Char
 .highlight .sd, // Literal.String.Doc
@@ -80,13 +110,13 @@ p code { background-color: hsl(216, 13%, 86%); color: hsl(216, 13%, 25%) }
 .highlight .se, // Literal.String.Escape
 .highlight .sh, // Literal.String.Heredoc
 .highlight .si, // Literal.String.Interpol
-.highlight .sx { color: hsl(355, 90%, 60%) } // Literal.String.Other
-.highlight .ss { color: hsl(282, 50%, 70%) } // Literal.String.Symbol
-.highlight .bp { color: hsl(216, 13%, 22%) } // Name.Builtin.Pseudo
+.highlight .sx { color: darken($hl-red,10%) } // Literal.String.Other
+.highlight .ss { color: $hl-purple } // Literal.String.Symbol
+.highlight .bp { color: darken($hl-base,28%) } // Name.Builtin.Pseudo
 
 
 // Variables
 
 .highlight .vc, // Name.Variable.Class
 .highlight .vg, // Name.Variable.Global
-.highlight .vi { color: hsl(32, 96%, 68%) } // Name.Variable.Instance
+.highlight .vi { color: $hl-orange } // Name.Variable.Instance

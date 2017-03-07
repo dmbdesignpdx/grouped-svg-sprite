@@ -11,7 +11,7 @@ html, body {
 
 body {
     min-height: 100vh;
-    font: 300 20px 'Roboto', sans-serif;
+    font: 300 20px Roboto, sans-serif;
     background: $lso-offwhite;
     color: $lso-darkgray;
     -webkit-text-size-adjust: 100%;
@@ -36,7 +36,7 @@ nav a, a[role=button], body > footer a {
     text-decoration: none
 }
 
-img, object {
+img, object, svg, video, iframe {
     display: block
 }
 
@@ -44,19 +44,13 @@ address {
     font-style: normal
 }
 
-pre {
-    padding: 30px 35px 34px;
-    box-sizing: border-box;
-    margin-top: 15px;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    line-height: 1.5;
-    border-radius: 6px;
-    background: $lso-offwhite-two
+code {
+    font-size: 17px
 }
 
-pre, code {
-    font-size: 18px;
+pre {
+    margin-top: 15px;
+    font-size: 18px
 }
 
 section {
@@ -64,7 +58,7 @@ section {
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Roboto Slab';
+    font-family: 'Roboto Slab', Roboto, sans-serif;;
 }
 
 h1 {
@@ -90,12 +84,6 @@ h3 {
 p {
     margin-top: 30px;
     line-height: 1.6
-}
-
-p code {
-    padding: 2px 12px 3px;
-    margin: 0 2px;
-    border-radius: 16px
 }
 
 @import "base", "syntax";
