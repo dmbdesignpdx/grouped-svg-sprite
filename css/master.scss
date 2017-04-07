@@ -2,88 +2,10 @@
 # Sass
 ---
 
-@import "variables";
-@import "mixins";
-
-html, body {
-    height: 100vh
-}
-
-body {
-    min-height: 100vh;
-    font: 300 20px Roboto, sans-serif;
-    background: $lso-offwhite;
-    color: $lso-darkgray;
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%
-}
-
-html, body, textarea, menu, fieldset, input, button, select, legend, figure, div, h1, h2, h3, h4, h5, h6, hgroup, address, p, hr, blockquote, summary, ol, ul, dl, dd, pre, table, tbody, th, tr, td, colgroup, thead, tfoot, iframe {
-    padding: 0;
-    margin: 0;
-    border: 0
-}
-
-nav, main, section, header, footer, article, aside, address, hgroup, img, object, svg, iframe, video, audio, map, embed, canvas, textarea, form, fieldset, input, select, button, label, meter, progress, figure, ol, ul, dl, div, pre, table {
-    position: relative
-}
-
-ol, ul, li {
-    list-style: none
-}
-
-nav a, a[role=button], body > footer a {
-    text-decoration: none
-}
-
-img, object, svg, video, iframe {
-    display: block
-}
-
-address {
-    font-style: normal
-}
-
-code {
-    font-size: 17px
-}
-
-pre {
-    margin-top: 15px;
-    font-size: 18px
-}
-
-section {
-    padding: 0 0 90px
-}
-
-h1, h2, h3, h4 {
-    font-family: 'Roboto Slab', Roboto, sans-serif;;
-}
-
-h1 {
-    font-size: 2.4em
-}
-
-h2 {
-    margin-top: 60px;
-    font-size: 1.6em
-}
-
-h2:first-of-type {
-    padding-top: 60px;
-    margin-top: 0;
-    border-top: 1px solid darken($lso-offwhite-two,4)
-}
-
-h3 {
-    margin-top: 30px;
-    font-size: 1.2em
-}
-
-p {
-    margin-top: 30px;
-    line-height: 1.6
-}
-
-@import "base", "syntax";
+@import
+"flexr",
+"turntable",
+"syntax",
+"variables",
+"global",
+"base";

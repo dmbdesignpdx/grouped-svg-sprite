@@ -1,47 +1,46 @@
 #hero {
 
-    img {
-        width:100%;
-        height: auto;
-        margin: 60px auto 0;
+   img {
+      @include size(100% auto);
+      margin: 60px auto 0;
 
-        @include break(740px){
-            width: 60%
-        }
-        @include break(520px){
-            width: 50%
-        }
-    }
+      @include maxwidth(740px){
+         width: 60%
+      }
+      @include maxwidth(520px){
+         width: 50%
+      }
+   }
 
-    hgroup {
-        text-align: center;
+   hgroup {
+      text-align: center;
 
-        h3 {
-            margin-top: 12px;
-        }
+      h3 {
+         margin-top: 12px;
+      }
 
-        p {
-            margin-top: 12px;
-            color: $lso-lightergray;
-        }
-    }
+      p {
+         margin-top: 12px;
+         color: $lso-lightergray;
+         text-align: inherit
+      }
+   }
 
 }
 
 footer {
-    background: $lso-darkergray;
+   background: $lso-darkergray;
 
-    .col-x {
-        width: 120px
-    }
+   .col-x {
+      width: 120px
+   }
 
-    a {
-        display: block;
-        margin: 50px 0;
+   a {
+      display: block;
+      margin: 50px 0;
 
-        img {
-            width: 100%;
-            height: auto
-        }
-    }
+      img {
+         @include size(100% auto)
+      }
+   }
 }

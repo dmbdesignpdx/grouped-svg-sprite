@@ -8,9 +8,9 @@ image: gss.svg
 
 ## Best of Both Worlds
 
-Inline SVG Sprites work great when the origin code is in the actual HTML document. The `<use>` is an efficient way to reference the icon you want and call it to display. The problem lies in using *external* files for the inline sprite, especially if you have a huge sprite and are looking to not bloat your HTML document with all that SVG code. Aside from zero support in Internet Explorer[(1)](#refs), interactivity is limited when using external SVGs this way.
+Inline SVG Sprites work great when the SVG source code is in the actual HTML document. The `<use>` is an efficient way to reference the icon you want and call it to display. The problem lies in using *external* files for the inline sprite; especially if **a)** you have a huge sprite, and **b)** you are not looking to bloat your HTML document with all that SVG code. Aside from zero support in Internet Explorer[(1)](#refs), interactivity is limited when using external SVGs as inline SVG sprites.
 
-Objects, on the other hand, are fantastic when it comes to interactivity and manipulation for an external SVG. You have a good amount of  control with css that extends down to the individual paths, rects, lines, etc. Compatibility is also better; an `<object>` linking to an external SVG is supported by IE 9+[(2)](#refs)[(3)](#refs). The only problem is that you can't implement `<use>` and display the icon you want from a single SVG file like you can with the Inline SVG Sprite.
+Objects, on the other hand, are fantastic when it comes to interactivity and manipulation for an external SVG. You have a good amount of control with css that extends down to the individual paths, rects, lines, etc. Compatibility is also better; an `<object>` linking to an external SVG is supported by IE 9+[(2)](#refs)[(3)](#refs). The only problem is that you can't implement `<use>` and display the different icons you want from a single SVG file like you can with the Inline SVG Sprite.
 
 Now if only there was a way to could combine the concept of Inline SVG Sprites with the control of the object element on external SVGs...
 
@@ -22,6 +22,7 @@ Here is our simple svg that we want to become a sprite:
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+
     <g id="square">
         <rect x="20" y="20" width="60" height="60"/>
     </g>
@@ -31,6 +32,7 @@ Here is our simple svg that we want to become a sprite:
     <g id="triangle">
         <polygon points="50 20 15 80 85 80 50 20"/>
     </g>
+
 </svg>
 ```
 
@@ -51,18 +53,18 @@ Presentation Attributes:
 ...
 ```
 
-Or, all at once with Inline CSS:
+Or, with Inline CSS:
 
 ```xml
 ...
 
     <defs>
 
-        <style>
+        <style><![CDATA[
 
-            g { display: none }
+            #square, #circle, #triangle { display: none }
 
-        </style>
+       ]]></style>
 
     </defs>
 
@@ -223,10 +225,158 @@ window.onload = groupedSVG;
 or
 
 ```js
-window.addEventListener('load',groupedSVG,false);
+window.addEventListener('load',groupedSVG);
 ```
 
 And there you have it! Now you have a Grouped SVG Sprite, which means you have a sprite with the best interactive capabilities and manipulation by using css.
+
+## Futher Reading:
+## Making Your Grouped SVG Sprite Clickable
+
+So, if you're trying to use the Grouped SVG Sprite as a clickable icon, you may quickly realize that you can't actually click on it. What's happening is that a nested document is created inside the object, which is normal behavior for an object containing an SVG. So when you mouse over an this object, you are basically escaping the main document and hovering over into this mini document.
+
+Have no fear, you can set up your Grouped SVG Sprite to handle this problem!
+
+### Setting Up a 'Clickable' Area
+
+So, here is our Grouped SVG Sprite that's set with inline styling:
+
+```xml
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<?xml-stylesheet type="text/css" href="../css/master.css"?>
+
+   <defs>
+
+      <style><![CDATA[
+
+         #square, #circle, #triangle { display: none }
+
+      ]]></style>
+
+   </defs>
+
+   <g id="square">
+      <rect x="20" y="20" width="60" height="60"/>
+   </g>
+   <g id="circle">
+      <circle cx="50" cy="50" r="30"/>
+   </g>
+   <g id="triangle">
+      <polygon points="50 20 15 80 85 80 50 20"/>
+   </g>
+
+</svg>
+```
+
+First, we need to add the xlink namespace to our SVG document:
+
+```xml
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+```
+
+Next, let's create a rectangle that will encompass the size of the SVG and will have an opacity of 0. We'll place it in the `defs` and give it a reference ID (this, of course, is not the _only_ way to do this):
+
+```xml
+...
+   <defs>
+
+      <style><![CDATA[
+
+         #square, #circle, #triangle { display: none }
+
+      ]]></style>
+
+      <rect id="click" width="100" height="100" opacity="0"/>
+
+   </defs>
+...
+```
+
+Lastly, we'll reference those rectangles with `use` above the icon in their groups:
+
+```xml
+...
+   <g id="square">
+      <use xlink:href="#click"/>
+      <rect x="20" y="20" width="60" height="60"/>
+   </g>
+   <g id="circle">
+      <use xlink:href="#click"/>
+      <circle cx="50" cy="50" r="30"/>
+   </g>
+   <g id="triangle">
+      <use xlink:href="#click"/>
+      <polygon points="50 20 15 80 85 80 50 20"/>
+   </g>
+...
+```
+
+### Setting Up the Links
+
+To start, we'll wrap each group in an anchor tag:
+
+```xml
+...
+   <a><g id="square">
+      <use xlink:href="#click"/>
+      <rect x="20" y="20" width="60" height="60"/>
+   </g></a>
+   <a><g id="circle">
+      <use xlink:href="#click"/>
+      <circle cx="50" cy="50" r="30"/>
+   </g></a>
+   <a><g id="triangle">
+      <use xlink:href="#click"/>
+      <polygon points="50 20 15 80 85 80 50 20"/>
+   </g></a>
+...
+```
+
+Then, create `xlink:href` attributes that share the same link that the HTML file has:
+
+```xml
+...
+   <a xlink:href="destination/here"><g id="square">
+      <use xlink:href="#click"/>
+      <rect x="20" y="20" width="60" height="60"/>
+   </g></a>
+   <a xlink:href="destination/here"><g id="circle">
+      <use xlink:href="#click"/>
+      <circle cx="50" cy="50" r="30"/>
+   </g></a>
+   <a xlink:href="destination/here"><g id="triangle">
+      <use xlink:href="#click"/>
+      <polygon points="50 20 15 80 85 80 50 20"/>
+   </g></a>
+...
+```
+
+Finally, because this SVG document is a separete document, we **need** to declare a `target` attribute. Otherwise, the object will literally load the result in itself. The only time you won't need to use a `target` is if you're using a special link; i.e. `mailto:` or `tel:`.
+
+Some options are:<br>
+`target="_blank"` if you plan to have the link go to a different site.<br>
+`target="_top"` if you want the link to go to a reference ID on the same page. For that, you'll also need to reference it to the root directory; i.e. your sprite is `root/img/sprite.svg`, you'll want the href to point to `../../#referenceID`.
+
+Here's an example:
+```xml
+...
+   <a xlink:href="../../#someID" target="_top"><g id="square">
+      <use xlink:href="#click"/>
+      <rect x="20" y="20" width="60" height="60"/>
+   </g></a>
+   <a xlink:href="http://flexrgrid.com" target="_blank"><g id="circle">
+      <use xlink:href="#click"/>
+      <circle cx="50" cy="50" r="30"/>
+   </g></a>
+   <a xlink:href="mailto:some@email.com"><g id="triangle">
+      <use xlink:href="#click"/>
+      <polygon points="50 20 15 80 85 80 50 20"/>
+   </g></a>
+...
+```
+
+Once, you've applied the proper target attributes, you're done! And now you have a Grouped SVG Sprite that is clickable.
+
 
 ### References
 {:#refs}
