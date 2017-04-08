@@ -1,13 +1,11 @@
 #hero {
+   padding: 60px 0 90px;
 
    img {
       @include size(100% auto);
-      margin: 60px auto 0;
+      margin: 0 auto;
 
-      @include maxwidth(740px){
-         width: 60%
-      }
-      @include maxwidth(520px){
+      @include phonePor {
          width: 50%
       }
    }
@@ -15,16 +13,28 @@
    hgroup {
       text-align: center;
 
+      h1 {
+
+         @include phoneLan {
+            font-size: 2em
+         };
+      }
+
       h3 {
          margin-top: 12px;
       }
 
       p {
          margin-top: 12px;
-         color: $lso-lightergray;
-         text-align: inherit
+         color: $lso-lightergray
       }
    }
+
+}
+
+#content {
+   padding: 0 0 90px;
+   text-align: justify;
 
 }
 

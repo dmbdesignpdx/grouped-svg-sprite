@@ -9,10 +9,6 @@ url: http://danileblake.design
 markdown: kramdown
 kramdown:
     auto_ids: false
-    input: GFM
     syntax_highlighter: rouge
 
 port: 4001
-
-exclude:
-   - .jekyll-metadata

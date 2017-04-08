@@ -10,6 +10,8 @@
 
     <title>{{ page.title | default: site.title }}</title>
 
+    <meta name="description" content="{{ page.description | default: site.description }}">
+
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700|Roboto:300" rel="stylesheet">
 
     <link rel="stylesheet" href="/css/master.css">
@@ -22,7 +24,7 @@
 
         <section id="hero">
 
-            <div class="row exp">
+            <div class="row">
 
                 <div class="col-2">
 
@@ -42,7 +44,7 @@
 
                         <h3>{{ page.subtitle }}</h3>
 
-                        <p>by Daniel Blake</p>
+                        <p>by {{ site.creator }}</p>
 
                     </hgroup>
 
@@ -52,7 +54,7 @@
 
         </section>
 
-        <section>
+        <section id="content">
 
             <div class="row">
 

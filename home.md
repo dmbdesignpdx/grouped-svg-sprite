@@ -2,7 +2,7 @@
 permalink: /
 layout: base
 title: Grouped SVG Sprite
-description: Grouped SVG Sprite
+description: Grouped SVG Sprite - Create an SVG Sprite With the Object Element
 subtitle: Create an SVG Sprite With the Object Element
 image: gss.svg
 ---

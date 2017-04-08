@@ -21,6 +21,10 @@ nav, main, section, header, footer, article, aside, address, hgroup, img, object
    position: relative
 }
 
+h1, h2, h3, h4, h5, h6, p {
+   text-align: inherit
+}
+
 ol, ul, li {
    list-style: none
 }
@@ -44,10 +48,6 @@ code {
 pre {
    margin-top: 27px;
    font-size: 18px
-}
-
-section {
-   padding: 0 0 90px
 }
 
 h1, h2, h3, h4 {
@@ -82,6 +82,4 @@ p + h3, [class^=language] + h3 {
 p {
    @include bodyCopy;
    margin-top: 30px;
-   line-height: 1.6;
-   text-align: justify;
 }
