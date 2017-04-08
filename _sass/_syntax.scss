@@ -36,11 +36,11 @@ pre, .highlight {
 
 // Comments
 
-.highlight .c, // Comment
+.highlight .c, // Commentw
 .highlight .cm, // Comment.Multiline
-.highlight .c1 { color: darken($hl-base,15%); font-style: italic } // Comment.Single
+.highlight .c1 { color: darken($hl-base,14%); font-style: italic } // Comment.Single
 .highlight .cp { color: lighten($hl-base,20%) } // Comment.Preproc
-.highlight .cs { color: darken($hl-base,15%); font-weight: bold; font-style: italic } // Comment.Special
+.highlight .cs { color: darken($hl-base,14%); font-weight: bold; font-style: italic } // Comment.Special
 
 
 // Errors

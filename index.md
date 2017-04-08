@@ -268,13 +268,13 @@ So, here is our Grouped SVG Sprite that's set with inline styling:
 </svg>
 ```
 
-First, we need to add the xlink namespace to our SVG document:
+First, we need to add the XML `xlink` namespace to our SVG document:
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
 ```
 
-Next, let's create a rectangle that will encompass the size of the SVG and will have an opacity of 0. We'll place it in the `defs` and give it a reference ID (this, of course, is not the _only_ way to do this):
+Next, create a rectangle that is the exact size of the SVG's viewBox to ensure all of the SVG is tangible. Since we don't actually want to see rectangle, we can set the opacity to 0. We'll place it in the `defs` and give it a reference ID of `#click`:
 
 ```xml
 ...
@@ -313,7 +313,7 @@ Lastly, we'll reference those rectangles with `use` above the icon in their grou
 
 ### Setting Up the Links
 
-To start, we'll wrap each group in an anchor tag:
+To start, wrap each group in an anchor tag:
 
 ```xml
 ...
@@ -332,7 +332,7 @@ To start, we'll wrap each group in an anchor tag:
 ...
 ```
 
-Then, create `xlink:href` attributes that share the same link that the HTML file has:
+Then, create `xlink:href` attributes that will share the same link that the icon in the HTML file has:
 
 ```xml
 ...
@@ -351,11 +351,11 @@ Then, create `xlink:href` attributes that share the same link that the HTML file
 ...
 ```
 
-Finally, because this SVG document is a separete document, we **need** to declare a `target` attribute. Otherwise, the object will literally load the result in itself. The only time you won't need to use a `target` is if you're using a special link; i.e. `mailto:` or `tel:`.
+Finally, because this SVG document is a separete document, we **need** to declare a `target` attribute. Otherwise, the object will literally load the destination in itself. The only time you won't need to use a `target` is if you're using _special&nbsp;links_ such as `mailto:` or `tel:`.
 
-Some options are:<br>
-`target="_blank"` if you plan to have the link go to a different site.<br>
-`target="_top"` if you want the link to go to a reference ID on the same page. For that, you'll also need to reference it to the root directory; i.e. your sprite is `root/img/sprite.svg`, you'll want the href to point to `../../#referenceID`.
+Some target options are:<br>
+A) `_blank` if you plan to have the link take the user to a different site.<br>
+B) `_top` if the link is going to a reference ID on the HTML page. For that, you'll also need to reference it to the root directory; i.e. your sprite is at `root/img/sprite.svg`, you'll want the href to point _back_ two directories `../../#referenceID`.
 
 Here's an example:
 ```xml
