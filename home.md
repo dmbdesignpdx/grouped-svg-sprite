@@ -1,4 +1,5 @@
 ---
+permalink: /
 layout: base
 title: Grouped SVG Sprite
 description: Grouped SVG Sprite
@@ -8,7 +9,7 @@ image: gss.svg
 
 ## Best of Both Worlds
 
-Inline SVG Sprites work great when the SVG source code is in the actual HTML document. The `<use>` is an efficient way to reference the icon you want and call it to display. The problem lies in using *external* files for the inline sprite; especially if **a)** you have a huge sprite, and **b)** you are not looking to bloat your HTML document with all that SVG code. Aside from zero support in Internet Explorer[(1)](#refs), interactivity is limited when using external SVGs as inline SVG sprites.
+Inline <abbr title="Scalable Vector Graphics">SVG</abbr> Sprites work great when the SVG source code is in the actual HTML document. The `<use>` is an efficient way to reference the icon you want and call it to display. The problem lies in using *external* files for the inline sprite; especially if **a)** you have a huge sprite, and **b)** you are not looking to bloat your HTML document with all that SVG code. Aside from zero support in Internet Explorer[(1)](#refs), interactivity is limited when using external SVGs as inline SVG sprites.
 
 Objects, on the other hand, are fantastic when it comes to interactivity and manipulation for an external SVG. You have a good amount of control with css that extends down to the individual paths, rects, lines, etc. Compatibility is also better; an `<object>` linking to an external SVG is supported by IE 9+[(2)](#refs)[(3)](#refs). The only problem is that you can't implement `<use>` and display the different icons you want from a single SVG file like you can with the Inline SVG Sprite.
 
