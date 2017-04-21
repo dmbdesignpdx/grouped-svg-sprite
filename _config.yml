@@ -6,7 +6,6 @@ email: dmblakedesign@gmail.com
 baseurl: ""
 url: http://danileblake.design
 
-markdown: kramdown
 kramdown:
     auto_ids: false
     syntax_highlighter: rouge
