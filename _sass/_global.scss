@@ -1,0 +1,85 @@
+html, body {
+   height: 100vh
+}
+
+body {
+   @include noTextAdjust;
+   @include smoothFonts;
+   min-height: 100vh;
+   font: 300 20px Roboto, sans-serif;
+   background: $lso-offwhite;
+   color: $lso-darkgray;
+}
+
+html, body, textarea, menu, fieldset, input, button, select, legend, figure, div, h1, h2, h3, h4, h5, h6, hgroup, address, p, hr, blockquote, summary, ol, ul, dl, dd, pre, table, tbody, th, tr, td, colgroup, thead, tfoot, iframe {
+   padding: 0;
+   margin: 0;
+   border: 0
+}
+
+nav, main, section, header, footer, article, aside, address, hgroup, img, object, svg, iframe, video, audio, map, embed, canvas, textarea, form, fieldset, input, select, button, label, meter, progress, figure, ol, ul, dl, div, pre, table {
+   position: relative
+}
+
+h1, h2, h3, h4, h5, h6, p {
+   text-align: inherit
+}
+
+ol, ul, li {
+   list-style: none
+}
+
+nav a, a[role=button], body > footer a {
+   text-decoration: none
+}
+
+img, object, svg, video, iframe {
+   display: block
+}
+
+address {
+   font-style: normal
+}
+
+code {
+   font-size: 17px
+}
+
+pre {
+   margin-top: 27px;
+   font-size: 18px
+}
+
+h1, h2, h3, h4 {
+   @include titles;
+   font-family: 'Roboto Slab', Roboto, sans-serif;
+}
+
+h1 {
+   font-size: 2.4em
+}
+
+h2 {
+   margin-top: 90px;
+   font-size: 1.6em
+}
+
+h2:first-of-type {
+   padding-top: 90px;
+   margin-top: 0;
+   border-top: 1px solid darken($lso-offwhite-two,4)
+}
+
+h3 {
+   margin-top: 30px;
+   font-size: 1.2em
+}
+
+p + h3, [class^=language] + h3 {
+   margin-top: 60px
+}
+
+p {
+   @include bodyCopy;
+   margin-top: 30px;
+}

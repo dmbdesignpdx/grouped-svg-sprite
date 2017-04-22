@@ -1,0 +1,13 @@
+title: doodle article
+description: doodle articles are documented ideas by Daniel Blake.
+creator: Daniel Blake
+email: dmblakedesign@gmail.com
+
+baseurl: ""
+url: http://danileblake.design
+
+kramdown:
+    auto_ids: false
+    syntax_highlighter: rouge
+
+port: 4001

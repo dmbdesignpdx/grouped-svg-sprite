@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" aria-labelledby="title" viewBox="0 0 200 200">
+<title id="title">grouped svg sprite icon</title>
+<defs><style>
+    * {
+        fill: none;
+        stroke: #90A4AD;
+        stroke-linecap: round;
+        stroke-width: 6px
+    }
+        rect {
+        stroke: #26C6DA
+    }
+</style></defs>
+<rect x="40" y="40" width="60" height="60" rx="5" ry="5"/>
+<path d="M110,70h15a5,5,0,0,1,5,5v50a5,5,0,0,1-5,5H75a5,5,0,0,1-5-5V110"/>
+<path d="M140,100h15a5,5,0,0,1,5,5v50a5,5,0,0,1-5,5H105a5,5,0,0,1-5-5V140"/>
+</svg>
