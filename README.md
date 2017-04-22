@@ -4,17 +4,17 @@ by Daniel Blake
 
 ## Best of Both Worlds
 
-Inline SVG Sprites work great when the SVG source code is in the actual HTML document. The `<use>` is an efficient way to reference the icon you want and call it to display. The problem lies in using *external* files for the inline sprite; especially if **a)** you have a huge sprite, and **b)** you are not looking to bloat your HTML document with all that SVG code. Aside from zero support in Internet Explorer(1), interactivity is limited when using external SVGs as inline SVG sprites.
+Inline <abbr title="Scalable Vector Graphics">SVG</abbr> Sprites work great when the source code is in the _actual_ HTML document. The `<use>` element is an efficient way to reference the icon you want and call it to display. The problem lies when using _external_ files for the inline sprite; especially if you have a huge SVG document and you are not looking to bloat your <abbr title="Hypertext Markup Language">HTML</abbr> document with all that SVG code. Aside from _zero_ support in Internet Explorer[(1)](#refs), interactivity is limited when using external SVGs as inline SVG sprites.
 
-Objects, on the other hand, are fantastic when it comes to interactivity and manipulation for an external SVG. You have a good amount of control with css that extends down to the individual paths, rects, lines, etc. Compatibility is also better; an `<object>` linking to an external SVG is supported by IE 9+(2)(3). The only problem is that you can't implement `<use>` and display the different icons you want from a single SVG file like you can with the Inline SVG Sprite.
+On the other hand, `<object>` elements are fantastic when it comes to interactivity and manipulation for an external SVG. You have a pretty good amount of control with CSS that also includes some control over the inner elements `<path>`, `<rect>`, `<line>`, etc. Compatibility is also better; an `<object>` linking to an external SVG is supported by IE 9+[(2)](#refs)[(3)](#refs). The only problem is that you can't implement `<use>` and display the different icons you want from a single SVG file like you can with the Inline SVG Sprite.
 
 Now if only there was a way to could combine the concept of Inline SVG Sprites with the control of the object element on external SVGs...
 
-Well, there is! Using a concept I like to call 'Grouped SVG Sprite', we can achieve that. So, let's see how that's done.
+Well, there is! Using a concept I like to call 'Grouped SVG Sprites', we can achieve that. So, let's see how that's done.
 
 ## The External SVG
 
-Here is our simple svg that we want to become a sprite:
+Here is our simple SVG that we want to become a sprite:
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -32,11 +32,11 @@ Here is our simple svg that we want to become a sprite:
 </svg>
 ```
 
-The groups `#square`, `#circle`, and `#triangle` contain what we want to be our icons. If you're familiar with inline svg sprites, this will look similar: instead of using the `<symbol>`, we'll be using the good ol' fashioned `<g>`.
+The groups `#square`, `#circle`, and `#triangle` contain what we want to be our icons. If you're already familiar with Inline SVG Sprites, this will look very similar: instead of using `<symbol>`, we'll be using the good ol' fashioned `<g>`.
 
-The first step is to set those groups to `display: none`. The following are a couple of ways to this.
+The first step is to set those groups to `display: none`. The following are just a couple of ways to do this.
 
-Presentation Attributes:
+Using presentation attributes:
 ```xml
 ...
 
@@ -49,7 +49,7 @@ Presentation Attributes:
 ...
 ```
 
-Or, with Inline CSS:
+Or, using inline <abbr title="Cascading Style Sheets">CSS</abbr>:
 
 ```xml
 ...
@@ -67,20 +67,20 @@ Or, with Inline CSS:
 ...
 ```
 
-Then, add a link to your main css before the `<svg>`:
+Then, add an <abbr title="Extensible Markup Language">XML</abbr> stylesheet link to reference your main CSS before the opening `<svg>`:
 
 ```xml
 <?xml-stylesheet type="text/css" href="your.css"?>
 <svg>...</svg>
 ```
 
-It's important to note that when you want to manipulate and interact with the icon, in your linked css you will use the ID of the group, **not** the ID of the object in the HTML (you'll see what I'm talking about next).
+It's important to note here that when you want to manipulate and interact with the icon, in your CSS you will use the ID of the group, **not** the ID of the object in the HTML (you'll see what I'm talking about next).
 
 ## The HTML
 
-The html is pretty simple as well; it's just a matter of correctly naming the ID of the object that is associated with the ID of the group you want to show.
+The HTML is pretty simple as well; it's just a matter of correctly naming the ID of the object that is associated with the ID of the group you want to show.
 
-First, setup your objects to have their `data` attribute pointing to the external svg file:
+First, setup your objects to have their `data` attribute pointing to the external SVG file:
 
 ```html
 <object type="image/svg+xml" data="sprite.svg">...</object>
@@ -104,7 +104,7 @@ And that's it for the HTML!
 
 What?! JavaScript?? I know, I know. But trust me, this script is painless and really small; and the payoff is completely worth it.
 
-To start off, we'll create a function called groupedSVG:
+To start off, we'll create a function called `groupedSVG`:
 
 ```js
 
@@ -157,7 +157,7 @@ function groupedSVG() {
 };
 ```
 
-Next we'll use `contentDocument` to access the SVG inside current object and with that create a variable called `svgDoc`:
+Next we'll use `contentDocument` to access the SVG mini document inside current object and with that create a variable called `svgDoc`:
 
 ```js
 function groupedSVG() {
@@ -192,7 +192,7 @@ function groupedSVG() {
 };
 ```
 
-And finally, we'll tell that group to show itself!
+And finally, we'll tell that group to show itself by settings its diplay to `block`.
 
 ```js
 function groupedSVG() {
@@ -212,7 +212,7 @@ function groupedSVG() {
 };
 ```
 
-All that's left is to call this function. This function **has** to be called when the document finishes loading. Otherwise, the JavaScript will access an empty object. You can do that one of two ways:
+All that's left is to call this function. This function **has to be** called when the document finishes loading. Otherwise, the JavaScript will access an empty object. You can do that one of two ways:
 
 ```js
 window.onload = groupedSVG;
@@ -229,7 +229,7 @@ And there you have it! Now you have a Grouped SVG Sprite, which means you have a
 ## Futher Reading:
 ## Making Your Grouped SVG Sprite Clickable
 
-So, if you're trying to use the Grouped SVG Sprite as a clickable icon, you may quickly realize that you can't actually click on it. What's happening is that a nested document is created inside the object, which is normal behavior for an object containing an SVG. So when you mouse over an this object, you are basically escaping the main document and hovering over into this mini document.
+So, if you're trying to use the Grouped SVG Sprite as a clickable icon, you may quickly realize that you can't actually click on it. What's happening is that the object element creates a nested document inside itself, which is normal behavior for an object containing an SVG. So when you mouse over this object, you are basically escaping the main document and hovering into this newly created mini document.
 
 Have no fear, you can set up your Grouped SVG Sprite to handle this problem!
 
@@ -351,7 +351,7 @@ Finally, because this SVG document is a separete document, we **need** to declar
 
 Some target options are:<br>
 A) `_blank` if you plan to have the link take the user to a different site.<br>
-B) `_top` if the link is going to a reference ID on the HTML page. For that, you'll also need to reference it to the root directory; i.e. your sprite is at `root/img/sprite.svg`, you'll want the href to point _back_ two directories `../../#referenceID`.
+B) `_top` if the link is going to a reference ID on the HTML page. For that, you'll also need to reference it to the directory where that page resides; i.e. your page is at the root directory and your sprite is at `[root]/img/sprite.svg`, you'll want the href to point _back_ two directories `../../#referenceID`.
 
 Here's an example:
 ```xml
@@ -375,6 +375,7 @@ Once, you've applied the proper target attributes, you're done! And now you have
 
 
 ### References
+{:#refs}
 
 (1) [&lt;use&gt;  MDN](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use)<br>
 (2) [&lt;object&gt;  MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object)<br>
