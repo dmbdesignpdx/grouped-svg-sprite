@@ -4,7 +4,9 @@ layout: base
 title: Grouped SVG Sprite
 description: Grouped SVG Sprite - Create an SVG Sprite With the Object Element
 subtitle: Create an SVG Sprite With the Object Element
-image: gss.svg
+image:
+   src: gss.svg
+   alt: grouped svg sprite icon
 ---
 
 ## Best of Both Worlds
