@@ -3,7 +3,7 @@ description: doodle articles are documented ideas by Daniel Blake.
 creator: Daniel Blake
 email: dmblakedesign@gmail.com
 
-baseurl: /grouped-svg-sprite
+baseurl: ""
 url: http://danielblake.design/grouped-svg-sprite/
 
 kramdown:

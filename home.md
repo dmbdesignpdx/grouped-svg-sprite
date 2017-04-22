@@ -384,6 +384,6 @@ Once, you've applied the proper target attributes, you're done! And now you have
 ### References
 {:#refs}
 
-(1) [&lt;use&gt;  MDN](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use)<br>
-(2) [&lt;object&gt;  MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object)<br>
-(3) ['SVG'  caniuse](http://caniuse.com/#search=svg)
+(1) <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use" target="_blank">&lt;use&gt; MDN</a><br>
+(2) <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object" target="_blank">&lt;object&gt;  MDN</a><br>
+(3) <a href="http://caniuse.com/#search=svg" target="_blank">'SVG' caniuse</a>
