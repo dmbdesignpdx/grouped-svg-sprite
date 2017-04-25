@@ -242,11 +242,11 @@ Have no fear, you can set up your Grouped SVG Sprite to handle this problem!
 
 ### Setting Up a 'Clickable' Area
 
-So, here is our Grouped SVG Sprite that's set with inline styling:
+So, here is our Grouped SVG Sprite that's using inline CSS:
 
 ```xml
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
 <?xml-stylesheet type="text/css" href="../css/master.css"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
 
    <defs>
 
@@ -277,7 +277,7 @@ First, we need to add the XML `xlink` namespace to our SVG document:
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
 ```
 
-Next, create a rectangle that is the exact size of the SVG's viewBox to ensure all of the SVG is tangible. Since we don't actually want to see rectangle, we can set the opacity to 0. We'll place it in the `defs` and give it a reference ID of `#click`:
+Next, create a rectangle that is the exact size of the SVG's viewBox to ensure all of the SVG is tangible. Since we don't actually want to see rectangle, we can set the opacity to 0. We'll place it in the `<defs>` and give it a reference ID of `#click`:
 
 ```xml
 ...
@@ -295,7 +295,7 @@ Next, create a rectangle that is the exact size of the SVG's viewBox to ensure a
 ...
 ```
 
-Lastly, we'll reference those rectangles with `use` above the icon in their groups:
+Lastly, we'll reference that rectangle for each group with `<use>`:
 
 ```xml
 ...
@@ -360,17 +360,20 @@ Some target options are:<br>
 A) `_blank` if you plan to have the link take the user to a different site.<br>
 B) `_top` if the link is going to a reference ID on the HTML page. For that, you'll also need to reference it to the directory where that page resides; i.e. your page is at the root directory and your sprite is at `[root]/img/sprite.svg`, you'll want the href to point _back_ two directories `../../#referenceID`.
 
-Here's an example:
+Here's a 'final' example:
 ```xml
 ...
+   <!-- Link to ID on Page -->
    <a xlink:href="../../#someID" target="_top"><g id="square">
       <use xlink:href="#click"/>
       <rect x="20" y="20" width="60" height="60"/>
    </g></a>
+   <!-- Link to Another Site -->
    <a xlink:href="http://flexrgrid.com" target="_blank"><g id="circle">
       <use xlink:href="#click"/>
       <circle cx="50" cy="50" r="30"/>
    </g></a>
+   <!-- Special Link -->
    <a xlink:href="mailto:some@email.com"><g id="triangle">
       <use xlink:href="#click"/>
       <polygon points="50 20 15 80 85 80 50 20"/>
